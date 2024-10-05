@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .open-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .open-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="open-button" onclick="openApp()">Open App</button>
+
+    <script>
+        function openApp() {
+            // Attempt to open the app using a deep link or custom URL scheme
+            var appLink = 'mybgmiddos://open';  // You can replace this with another app's deep link
+            // <data android:scheme="mybgmiddos" android:host="open" />
+
+            // Use window.open() instead of changing window.location.href
+            var opened = window.open(appLink, '_self');
+
+            // If the app fails to open, show an error after a delay (no Play Store redirection)
+            setTimeout(function() {
+                if (!opened) {
+                    alert('App is not installed or cannot be opened.');
+                }
+            }, 1500);  // Delay to give time for app to open
+        }
+    </script>
+
+</body>
+</html>
